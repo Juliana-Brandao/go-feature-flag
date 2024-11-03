@@ -2,19 +2,22 @@ package service
 
 import (
 	"github.com/Waelson/go-feature-flag/internal/repository"
+	"github.com/Waelson/go-feature-flag/internal/util"
 	"sync"
 )
 
 type FeatureFlagService struct {
-	repo         *repository.FeatureFlagRepository
-	featureFlags map[string]bool
-	mu           sync.RWMutex
+	repo          *repository.FeatureFlagRepository
+	MetricsRecord util.MetricsRecord
+	featureFlags  map[string]bool
+	mu            sync.RWMutex
 }
 
-func NewFeatureFlagService(repo *repository.FeatureFlagRepository) *FeatureFlagService {
+func NewFeatureFlagService(repo *repository.FeatureFlagRepository, metricsRecord util.MetricsRecord) *FeatureFlagService {
 	return &FeatureFlagService{
-		repo:         repo,
-		featureFlags: make(map[string]bool),
+		repo:          repo,
+		MetricsRecord: metricsRecord,
+		featureFlags:  make(map[string]bool),
 	}
 }
 
@@ -26,7 +29,19 @@ func (ffs *FeatureFlagService) UpdateFeatureFlags() error {
 	if err != nil {
 		return err
 	}
-	ffs.featureFlags = flags
+
+	ffs.MetricsRecord.ResetGaugeFeatureFlag()
+
+	for flagName, enabled := range flags {
+		ffs.featureFlags[flagName] = enabled
+
+		status := "enabled"
+		if !enabled {
+			status = "disabled"
+		}
+		ffs.MetricsRecord.WithLabelValues(flagName, status)
+	}
+
 	return nil
 }
 
