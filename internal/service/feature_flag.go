@@ -36,10 +36,12 @@ func (ffs *FeatureFlagService) UpdateFeatureFlags() error {
 		ffs.featureFlags[flagName] = enabled
 
 		status := "enabled"
+		value := 1.0
 		if !enabled {
 			status = "disabled"
+			value = 0.0
 		}
-		ffs.MetricsRecord.WithLabelValues(flagName, status)
+		ffs.MetricsRecord.WithLabelValues(flagName, status, value)
 	}
 
 	return nil

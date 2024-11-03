@@ -6,15 +6,15 @@ import (
 
 type MetricsRecord interface {
 	ResetGaugeFeatureFlag()
-	WithLabelValues(flagName string, status string)
+	WithLabelValues(flagName string, status string, value float64)
 }
 
 type metricsRecord struct {
 	gaugeFeatureFlag *prometheus.GaugeVec
 }
 
-func (m *metricsRecord) WithLabelValues(flagName string, status string) {
-	m.gaugeFeatureFlag.WithLabelValues(flagName, status).Set(1)
+func (m *metricsRecord) WithLabelValues(flagName string, status string, value float64) {
+	m.gaugeFeatureFlag.WithLabelValues(flagName, status).Set(value)
 }
 
 func (m *metricsRecord) ResetGaugeFeatureFlag() {
