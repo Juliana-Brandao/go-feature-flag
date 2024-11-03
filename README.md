@@ -21,4 +21,6 @@ Depois de entrar no Grafana, importe o dashboard usando o arquivo `dashboard.jso
 
 ![Architecture](documentation/images/dashboard_03.png)
 
-### Arquivos
+### Simulação
+Para avaliar a eficiência da solução, experimente `ativar` e `desativar` a feature flag utilizando os controles disponíveis diretamente no dashboard. Em seguida, verifique o comportamento da funcionalidade `Process Order` através do link correspondente, também acessível no dashboard.
+
