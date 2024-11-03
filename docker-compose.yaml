@@ -2,12 +2,21 @@ version: '3.8'
 
 services:
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - webapp0
+      - webapp1
+      - webapp2
+
   webapp0:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
     environment:
       - ENV=container
     depends_on:
@@ -19,8 +28,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8081:8080"
     environment:
       - ENV=container
     depends_on:
@@ -32,8 +39,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8082:8080"
     environment:
       - ENV=container
     depends_on:

@@ -39,7 +39,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<h1> Feature Flags</h2>\n<span> Acompanhe o status das features flags</span>\n<br>\n<br>  \n<a href='http://localhost:8081/feature-flag?flag_name=processOrderFeature&value=1' target='_blank'>Ativar</a> | <a href='http://localhost:8080/feature-flag?flag_name=processOrderFeature&value=0' target='_blank'>Desativar</a> | <a href='http://localhost:8080/process-order' target='_blank'>Process Order</a>",
+        "content": "<h1> Feature Flags</h2>\n<span> Acompanhe o status das features flags</span>\n<br>\n<br>  \n<a href='http://localhost/feature-flag?flag_name=processOrderFeature&value=1' target='_blank'>Ativar</a> | <a href='http://localhost/feature-flag?flag_name=processOrderFeature&value=0' target='_blank'>Desativar</a> | <a href='http://localhost/process-order' target='_blank'>Process Order</a>",
         "mode": "html"
       },
       "pluginVersion": "11.1.4",
