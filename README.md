@@ -9,13 +9,13 @@ A solução proposta é simples e eficiente. Ela consiste em um banco de dados c
 ![Architecture](documentation/images/architecture.png)
 
 ### Executando
-A aplicação está configurada para rodar com Docker Compose. Portanto, para vê-la funcionando, basta entrar no diretório raiz do aplicação e executar o comando abaixo:
+A aplicação está configurada para ser executada com Docker Compose. Para iniciá-la, entre no diretório raiz da aplicação e execute o seguinte comando:
 
 `
 docker-compose up --build
 `
 
-Após a inicialização do Docker Compose, acesse o [Grafana clicando aqui](http://localhost:3000) usando `admin` como usuário e senha. Após o login importe o dashboard a partir do arquivo `dashboard.json` na raiz do repositório.
+Após a inicialização dos serviços pelo Docker Compose, acesse o Grafana através do  http://localhost:3000 em seu navegador. Utilize `admin` como usuário e senha para fazer o login.
 
 
 
