@@ -14,7 +14,8 @@ A aplicação está configurada para rodar com Docker Compose. Portanto, para v�
 `
 docker-compose up --build
 `
-Após inicializar o Docker Compose, acesse o [Grafana clicando aqui](http://localhost:3000) use o `admin` como usuário e senha. Após o login importe o dashboard a partir do arquivo `dashboard.json` nesse repositório.
+
+Após inicializar o Docker Compose, acesse o [Grafana clicando aqui](http://localhost:3000) use o `admin` como usuário e senha. Após o login importe o dashboard a partir do arquivo `dashboard.json` na raiz do repositório.
 
 
 
