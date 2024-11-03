@@ -9,7 +9,7 @@ A solução proposta é simples e eficiente. Ela consiste em um banco de dados c
 ![Architecture](documentation/images/architecture.png)
 
 ### Executando
-A aplicação está configurada para rodar com Docker e Docker Compose. Portanto, para vê-la funcionando, basta apenas entrar no diretório e executar o comando
+A aplicação está configurada para rodar com Docker Compose. Portanto, para vê-la funcionando, basta entrar no diretório raiz do aplicaçãp e executar o comando abaixo:
 
 `
 docker-compose up --build
