@@ -33,3 +33,21 @@ func (repo *FeatureFlagRepository) GetAllFeatureFlags() (map[string]bool, error)
 
 	return flags, rows.Err()
 }
+
+func (repo *FeatureFlagRepository) UpdateFeatureFlagStatus(flagName string, enabled bool) error {
+	query := "UPDATE feature_flags SET enabled = $1 WHERE flag_name = $2"
+	result, err := repo.db.Exec(query, enabled, flagName)
+	if err != nil {
+		return fmt.Errorf("erro ao atualizar o status da feature flag: %v", err)
+	}
+
+	rowsAffected, err := result.RowsAffected()
+	if err != nil {
+		return fmt.Errorf("erro ao verificar as linhas afetadas: %v", err)
+	}
+	if rowsAffected == 0 {
+		return fmt.Errorf("feature flag '%s' não encontrada", flagName)
+	}
+
+	return nil
+}

@@ -6,7 +6,5 @@ CREATE TABLE IF NOT EXISTS feature_flags (
 
 -- Exemplo de inserção de algumas feature flags iniciais
 INSERT INTO feature_flags (flag_name, enabled) VALUES
-                                                   ('processOrderFeature', true),
-                                                   ('featureB', false),
-                                                   ('featureC', true)
+                                                   ('processOrderFeature', true)
 ON CONFLICT (flag_name) DO NOTHING;

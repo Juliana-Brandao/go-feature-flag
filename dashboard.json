@@ -27,7 +27,7 @@
         "uid": "ee2sc1uufvawwc"
       },
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 12,
         "x": 0,
         "y": 0
@@ -39,7 +39,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<h1> Feature Flags</h2>\n<span> Acompanhe o status das features flags</span>",
+        "content": "<h1> Feature Flags</h2>\n<span> Acompanhe o status das features flags</span>\n<br>\n<br>  \n<a href='http://localhost:8081/feature-flag?flag_name=processOrderFeature&value=1' target='_blank'>Ativar</a> | <a href='http://localhost:8080/feature-flag?flag_name=processOrderFeature&value=0' target='_blank'>Desativar</a> | <a href='http://localhost:8080/process-order' target='_blank'>Process Order</a>",
         "mode": "html"
       },
       "pluginVersion": "11.1.4",
@@ -114,7 +114,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 4,
       "options": {
@@ -172,7 +172,7 @@
         {
           "id": "limit",
           "options": {
-            "limitField": 4
+            "limitField": 10
           }
         }
       ],
@@ -193,6 +193,6 @@
   "timezone": "browser",
   "title": "Feature Flags - Dashboard",
   "uid": "ce2sirek28xz4b",
-  "version": 16,
+  "version": 20,
   "weekStart": ""
 }

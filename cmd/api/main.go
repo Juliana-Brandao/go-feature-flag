@@ -33,6 +33,7 @@ func main() {
 	metricsRecord := util.NewMetricsRecord()
 	featureFlagRepo := repository.NewFeatureFlagRepository(db)
 	featureFlagService := service.NewFeatureFlagService(featureFlagRepo, metricsRecord)
+	featureFlagController := controller.NewFeatureFlagController(featureFlagService)
 
 	if err := featureFlagService.UpdateFeatureFlags(); err != nil {
 		log.Fatal("Erro ao atualizar feature flags:", err)
@@ -56,6 +57,7 @@ func main() {
 
 	r.Handle("/metrics", promhttp.Handler())
 	r.Get("/process-order", orderController.ProcessOrderHandler)
+	r.Get("/feature-flag", featureFlagController.UpdateFeatureFlagStatusHandler)
 
 	log.Println("servidor inicialiado")
 	http.ListenAndServe(":8080", r)

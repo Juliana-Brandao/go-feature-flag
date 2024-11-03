@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"github.com/Waelson/go-feature-flag/internal/repository"
 	"github.com/Waelson/go-feature-flag/internal/util"
 	"sync"
@@ -53,4 +54,17 @@ func (ffs *FeatureFlagService) IsFeatureEnabled(flag string) bool {
 
 	enabled, exists := ffs.featureFlags[flag]
 	return exists && enabled
+}
+
+func (ffs *FeatureFlagService) UpdateFeatureFlagStatus(flagName string, value int) error {
+	var enabled bool
+	if value == 1 {
+		enabled = true
+	} else if value == 0 {
+		enabled = false
+	} else {
+		return fmt.Errorf("valor inválido para a feature flag: %d. Use 1 para ativo e 0 para inativo", value)
+	}
+
+	return ffs.repo.UpdateFeatureFlagStatus(flagName, enabled)
 }
