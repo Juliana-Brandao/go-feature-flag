@@ -15,8 +15,8 @@ A aplicação está configurada para ser executada com Docker Compose. Para inic
 docker-compose up --build
 `
 
-Após a inicialização dos serviços pelo Docker Compose, acesse o Grafana através da URL http://localhost:3000 em seu navegador. Utilize `admin` como usuário e senha para fazer o login.
+Após a inicialização dos serviços pelo Docker Compose, acesse o Grafana através da URL http://localhost:3000 em seu navegador. Utilize `admin` como usuário e senha para fazer o login. Depois importe o dashboard no Grafana utilizando o conteúdo do arquivo `dashboard.json` que se encontra na raiz do repositório.
 
-
+O dashboard permitirá 
 
 ### Arquivos
