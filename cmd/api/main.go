@@ -6,8 +6,10 @@ import (
 	"github.com/Waelson/go-feature-flag/internal/repository"
 	"github.com/Waelson/go-feature-flag/internal/service"
 	"github.com/Waelson/go-feature-flag/internal/util"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/go-chi/chi/v5"
@@ -15,7 +17,13 @@ import (
 )
 
 func main() {
-	connStr := "postgres://myuser:mypassword@localhost:5432/mydb?sslmode=disable"
+
+	dbAddress := "localhost"
+	if os.Getenv("ENV") == "container" {
+		dbAddress = "postgres"
+	}
+
+	connStr := "postgres://myuser:mypassword@" + dbAddress + ":5432/mydb?sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal("Erro ao conectar ao banco de dados:", err)
@@ -46,6 +54,7 @@ func main() {
 
 	r := chi.NewRouter()
 
+	r.Handle("/metrics", promhttp.Handler())
 	r.Get("/process-order", orderController.ProcessOrderHandler)
 
 	log.Println("servidor inicialiado")
